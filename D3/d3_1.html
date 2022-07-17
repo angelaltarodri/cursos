@@ -20,6 +20,9 @@
     /* width: 500px; */
     /* height: 100px; */
   }
+  .bar:hover {
+    fill: brown;
+  }
 </style>
 <body>
     <body>
@@ -56,18 +59,45 @@
               
               //
               const w = 500;
-              const h = 100;
+              const h = 150;
               const svg = d3.select("body")
               .append("svg")
               .attr("width", w)
               .attr("height", h)
               // .style("width", w )
               // .style("height", h )
+              svg.selectAll("rect")
+              .data(dataset)
+              .enter()
               .append("rect")
+              .attr("x", (d, i) => {
+                // Add your code below this line
+                    return i * 30 //i is the position of x in this case per element which is d
+                // Add your code above this line
+              })
+              .attr("y", (d, i) => {
+                return h - 3 * d
+              })
               .attr("width", 25)
-              .attr("height", 100)
-              .attr("x", 0)
-              .attr("y", 0)
+              .attr("height", (d, i) => {
+                return d*3 // d is the height based on each element of the dataset
+              })
+              .attr("fill", "tomato")
+              .attr("class", "bar")
+              //append text on tittle, well, i dont know how that works 
+              .append("title")
+              .text((d) => d)
+              // add text above the values in the graph
+              svg.selectAll("text")
+              .data(dataset)
+              .enter()
+              // Add your code below this line
+              .append("text")
+              .attr("x", (d, i) => i * 30)
+              .attr("y", (d, i) => h - 3 * d - 3)
+              .text((d, i) => d)
+              .style("font-size","25px")
+              .style("fill","red");
 
         </script>
       </body>
