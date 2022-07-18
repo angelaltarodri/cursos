@@ -10,7 +10,7 @@
 <body>
     <script>
         const dataset = [
-                        [ 34,    78 ],
+                        [ 34,    18 ],
                         [ 109,   280 ],
                         [ 310,   120 ],
                         [ 79,    411 ],
@@ -72,6 +72,23 @@
         .attr("x", (d) => xScale(d[0] - 30)) // originally, + 10
         .attr("y", (d) => yScale(d[1] + 10)); // originally, + 0
         // Add your code above this line
+
+        const xAxis = d3.axisBottom(xScale);
+        // Add your code below this line
+        const yAxis = d3.axisLeft(yScale);
+        // Add your code above this line
+
+        svg.append("g")
+        .attr("transform", "translate(0," + (h - padding) + ")")
+        .call(xAxis);
+
+        // Add your code below this line
+        svg.append("g")
+        .attr("transform", "translate(" + padding + ",0)")
+        .call(yAxis)
+
+        // Add your code above this line
+
 
     </script>
 </body>
