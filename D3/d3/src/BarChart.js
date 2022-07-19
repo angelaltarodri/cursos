@@ -36,7 +36,7 @@ const BarChart = ({ data }) => {
           const y1Axis = (g) =>
             g
               .attr("transform", `translate(${margin.left},0)`)
-              .style("color", "steelblue")
+              .style("color", "yellow")
               .call(d3.axisLeft(y1).ticks(null, "s"))
               .call((g) => g.select(".domain").remove())
               .call((g) =>
@@ -75,6 +75,7 @@ const BarChart = ({ data }) => {
             width: "100%",
             marginRight: "0px",
             marginLeft: "0px",
+            border: "1px solid white"
         }}
         >
         <g className="plot-area" />
