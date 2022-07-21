@@ -24,5 +24,59 @@ class ArrayList {
         return this.items;
     }
 }
-class Expense {
+class Expenses {
+    constructor(currency) {
+        this.count = 0;
+        this.finalCurrency = currency;
+        this.expenses = new ArrayList();
+    }
+    add(item) {
+        item.id = this.count;
+        this.count++;
+        this.expenses.add(item);
+        return true;
+    }
+    get(index) {
+        return this.expenses.get(index);
+    }
+    getItems() {
+        return this.expenses.getAll();
+    }
+    getTotal() {
+        const total = this.getItems().reduce((acc, item) => {
+            return acc += this.convertCurrency(item, this.finalCurrency);
+        }, 0);
+        return `${this.finalCurrency} ${total.toFixed(2).toString()}`;
+    }
+    remove(id) {
+        const items = this.getItems().filter(item => {
+            return item.id != id;
+        });
+        this.expenses.createFrom(items);
+        return true;
+    }
+    convertCurrency(item, currency) {
+        switch (item.cost.currency) {
+            case 'USD':
+                switch (currency) {
+                    case 'PEN':
+                        return item.cost.number * 3.84;
+                        break;
+                    default:
+                        return item.cost.number;
+                }
+                break;
+            case 'PEN':
+                switch (currency) {
+                    case 'USD':
+                        return item.cost.number / 3.84;
+                        break;
+                    default:
+                        return item.cost.number;
+                }
+                break;
+            default:
+                return 0;
+        }
+    }
 }
