@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<style>
+  .bar {
+    width: 25px;
+    height: 100px;
+    display: inline-block;
+    background-color: blue;
+    margin: 2px;
+  }
+  svg {
+    background-color: pink;
+    /* width: 500px; */
+    /* height: 100px; */
+  }
+  .bar:hover {
+    fill: brown;
+  }
+</style>
+<body>
+    <body>
+        <ul>
+            <li>Example</li>
+            <li>Example</li>
+            <li>Example</li>
+          </ul>
+        <script>
+          // Add your code below this line
+      
+        d3.select("body")
+            .append("h1")
+            .text("Learning D3");
+        d3.selectAll("li").text("list item")
+
+        const dataset = [12, 31, 22, 17, 25, 18, 29, 14, 9];
+
+        d3.select("body").selectAll("div")
+              .data(dataset)
+              .enter()
+              .append("div")
+              // .text((d) => d + " USD")
+              // .style("font-family","verdana")
+              // .style("color", (d) => {
+              //   if (d < 20){
+              //     return "red"
+              //   } else {
+              //     return "green"
+              //   }
+              // })
+              .attr("class", "bar")
+              .style("height", (d) => (d*10 + "px")) // Change this line
+              
+              //
+              const w = 500;
+              const h = 150;
+              const svg = d3.select("body")
+              .append("svg")
+              .attr("width", w)
+              .attr("height", h)
+              // .style("width", w )
+              // .style("height", h )
+              svg.selectAll("rect")
+              .data(dataset)
+              .enter()
+              .append("rect")
+              .attr("x", (d, i) => {
+                // Add your code below this line
+                    return i * 30 //i is the position of x in this case per element which is d
+                // Add your code above this line
+              })
+              .attr("y", (d, i) => {
+                return h - 3 * d
+              })
+              .attr("width", 25)
+              .attr("height", (d, i) => {
+                return d*3 // d is the height based on each element of the dataset
+              })
+              .attr("fill", "tomato")
+              .attr("class", "bar")
+              //append text on tittle, well, i dont know how that works 
+              .append("title")
+              .text((d) => d)
+              // add text above the values in the graph
+              svg.selectAll("text")
+              .data(dataset)
+              .enter()
+              // Add your code below this line
+              .append("text")
+              .attr("x", (d, i) => i * 30)
+              .attr("y", (d, i) => h - 3 * d - 3)
+              .text((d, i) => d)
+              .style("font-size","25px")
+              .style("fill","red");
+
+        </script>
+      </body>
+</body>
+</html>

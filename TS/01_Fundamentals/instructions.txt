@@ -1,0 +1,27 @@
+01. .gitignore
+02. .editorconfig
+03. npm init -y
+04. npm i typescript --save-dev
+05. npx tsc --version
+//copiar codigo
+06. @ts-check // para revisar codigo
+07. new 01-hello.ts
+08. npx tsc 01-hello.ts
+09. npx tsc demo.ts --target es6
+10. ir a la carpeta donde estan src y dist
+11. tipear tsc --init
+12. en tsconfig.json
+13. outDir: ./dist
+14. rootDir: ./src
+15. npx tsc -p ./ -w
+o
+16. npx tsc
+o
+17. npx tsc --watch (para compilar automaticamente al guardar CTRL + S)
+...
+18. npm i date-fns --save
+19. npm i lodash
+20. "import _ from 'lodash'"
+21. dar click en el foquito amarillo y dar click en npm i lodash
+o
+21. npm i @types/lodash --save-dev

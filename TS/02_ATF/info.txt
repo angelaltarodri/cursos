@@ -1,0 +1,7 @@
+tsc --init
+npm i -D ts-node
+ts-node src/demo.ts
+npx ts-node src/demo.ts
+npm install @capacitor/camera
+npm install @faker-js/faker --save-dev
+DTO (Data Transfer Objects)

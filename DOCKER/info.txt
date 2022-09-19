@@ -1,0 +1,35 @@
+docker ps -a
+docker run --name hello-platzi hello-world
+docker rename hello-platzi hola-platzi 
+docker rm cool_fermat -----> borrar cierto contenedor
+docker container prune -----> remover todos los contenedores
+
+docker run ubuntu
+docker run -it ubuntu
+ls -lac
+cat /etc/lsb-relase ------> para ver la distribucion de linux que estamos usando
+    luego en otra terminal
+    docker ps
+        // sí esta corriendo!!
+
+    // siempre prendido!
+    docker run --name alwaysup -d ubuntu tail -f /dev/null
+
+    docker exec -it alwaysup bash
+        ll
+        ps
+        ps -aux
+
+docker inspect --format '{{.State.Pid}}' alwaysup
+
+docker run -d --name proxy nginx
+
+    // para borrar un docker activo
+    docker rm -f alwaysup
+
+docker stop proxy
+docker rm proxy
+
+docker run --name proxy -p 8080:80 nginx -----> para que salga en el puerto 8080, p de publish
+    corriendo nginx en puerto 8080
+    

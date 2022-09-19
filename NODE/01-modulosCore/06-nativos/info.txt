@@ -1,0 +1,7 @@
+npm i -g node-gyp
+https://nodejs.org/api/addons.html
+Hello-world
+    (En la misma carpeta)
+    node-gyp configure
+    node-gyp build
+nodemon index.js

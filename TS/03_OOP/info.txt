@@ -1,0 +1,5 @@
+editorconfig
+gitignore
+URM = algo que se conecte a diferentes tipos de bases de datos
+npm i axios
+app.quicktype.io    ----> para crear codigo a partir de otro existente.

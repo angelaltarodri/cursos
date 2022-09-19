@@ -1,0 +1,21 @@
+{
+  "name": "03_oop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^7.4.0",
+    "axios": "^0.27.2",
+    "class-validator": "^0.13.2",
+    "ts-node": "^10.9.1"
+  }
+}

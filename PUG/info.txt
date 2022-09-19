@@ -1,0 +1,7 @@
+doctype html
+doctype xml
+doctype transitional
+doctype strict
+...more
+
+pug -w ./ -o ./html -P

@@ -1,0 +1,7 @@
+PARA DEBUGGER
+    node 01-modulosCore/07-http.js
+    node --inspect 01-modulosCore/07-http.js
+    chrome://inspect/#devices
+    ON DISCOVER NETWORK TARGETS: localhost:9229
+    CLICK ON Open dedicated DevTools for Node
+    ON NODE/NODOS: "explorer.exe ." of your folder
