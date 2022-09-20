@@ -5,3 +5,5 @@ doctype strict
 ...more
 
 pug -w ./ -o ./html -P
+
+control + click TO RENDER A COMPONENT

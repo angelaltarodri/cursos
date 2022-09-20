@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <title>Mixins in plug</title>
+    <style>
+      .comment {
+        font-family: sans-serif;
+        line-height: 1.5;
+        padding: 10px;
+        border: 1px solid #555;
+        width: 250px
+      }
+      .date { font-size: 85%; text-align: right; }
+      .author { font-size: 110%; font-weight: bold}
+      .text { font-size: 100% }
+    </style>
+  </head>
+  <body>
+    <div class="comment"><em>(Posted by Admin)</em>
+      <div class="date">04-02-2018</div>
+      <div class="author">dcode</div>
+      <div class="text">Hey mate, great tutorial!</div>
+    </div>
+    <div class="comment">
+      <div class="date">03-07-1996</div>
+      <div class="author">angel</div>
+      <div class="text">Hey mate, great bread!</div>
+    </div>
+  </body>
+</html>

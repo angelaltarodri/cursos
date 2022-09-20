@@ -5,7 +5,7 @@ docker rm cool_fermat -----> borrar cierto contenedor
 docker container prune -----> remover todos los contenedores
 
 docker run ubuntu
-docker run -it ubuntu
+docker run -it ubuntu -----> root@
 ls -lac
 cat /etc/lsb-relase ------> para ver la distribucion de linux que estamos usando
     luego en otra terminal
@@ -15,11 +15,12 @@ cat /etc/lsb-relase ------> para ver la distribucion de linux que estamos usando
     // siempre prendido!
     docker run --name alwaysup -d ubuntu tail -f /dev/null
 
-    docker exec -it alwaysup bash
+    docker exec -it alwaysup bash -----> root@
         ll
         ps
         ps -aux
-
+        
+//para obtener el ID 
 docker inspect --format '{{.State.Pid}}' alwaysup
 
 docker run -d --name proxy nginx
@@ -32,4 +33,69 @@ docker rm proxy
 
 docker run --name proxy -p 8080:80 nginx -----> para que salga en el puerto 8080, p de publish
     corriendo nginx en puerto 8080
+
+docker run --name proxy -d -p 8080:80 nginx
+
+docker logs proxy (todas las peticiones de log que acabo de hacer)
+
+docker logs -f proxy (de follow)
+
+docker logs --tail 10 -f proxy (los ultimos 10)
+
+___________________________________________________________________
+
+DATOS EN DOCKER
+
+    1. BIND MOUNTS
+//para crear un contenedor para que los datos en esa base de datos no mueran con el contenedor
+docker run -d --name db mongo:4
+docker exec -it db bash
+    mongosh
+
+docker rm -f db
+
+docker run -d --name db -v
+// en una carpeta dedicada para mandar el contenedor
+// 
+docker run -d --name db -v C:\Users\User\Desktop\mongodata:/data/db mongo
+    docker exec -it db bash
+    mongosh
+    db.users.insertOne({"nombre":"guido"})
+    db.users.find()
+
+    2. VOLUMENES
+    docker ps
+    docker volume ls
+    docker volume create dbdata
+    docker volume ls
     
+    docker run -d --name db --mount src=dbdata,dst=/data/db mongo
+    docker inspect db
+
+    docker exec -it db bash
+    db.users.insertOne({"nombre":"guido"})
+    db.users.find()
+    
+    docker rm -f db
+
+    3. INSERTAR Y EXTRAER ARCHIVOS DE UN CONTENEDOR
+    docker run -d --name copytest ubuntu tail -f /dev/null
+    docker exec -it copytest bash
+    mkdir testing
+    ll
+
+        ON DESKTOP
+        touch prueba.txt (o como se pueda crear un archivo prueba.txt)
+
+    docker cp prueba.txt copytest:/testing/test.txt
+    docker exec -it copytest bash
+    
+    cd testing
+    ls
+    -------> we created text.txt
+
+    docker cp copytest:/testing localtesting
+    dir  __or__ ls
+    cd localtesting
+    dir
+    -------> we created localtesting with text.txt inside it.
